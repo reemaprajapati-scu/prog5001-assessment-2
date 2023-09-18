@@ -12,6 +12,7 @@ public class Student {
     final private double assignmentOneMark;
     final private double assignmentTwoMark;
     final private double assignmentThreeMark;
+    private double totalMarks;
 
     public Student(String id, String name, double assignmentOneMark, double assignmentTwoMark, double assignmentThreeMark) {
         this.id = id;
@@ -39,6 +40,14 @@ public class Student {
 
     public double getAssignmentThreeMark() {
         return assignmentThreeMark;
+    }
+    
+    public double getTotalMarks() {
+        return totalMarks;
+    }
+
+    public void setTotalMarks(double totalMarks) {
+        this.totalMarks = totalMarks;
     }
 
 }

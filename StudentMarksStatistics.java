@@ -22,6 +22,7 @@ public class StudentMarksStatistics
     
      public void calculateMarksStatistics() {
         readDataFromTextFile();
+        calculateAndPrintTotalMarks();
     }
     
     /**
@@ -77,11 +78,31 @@ public class StudentMarksStatistics
                 }
             }
             scanner1.close();
-            System.out.println(getUnitName());
-            System.out.println(studentList.size());
-            
         } catch (IOException e) {
             System.out.println("Cannot open the file");
+        }
+    }
+    
+     /**
+     * F2: Calculate and print total marks for each student
+     */
+    public void calculateAndPrintTotalMarks() {
+
+        System.out.println(getUnitName());
+        System.out.println("--------------------------");
+
+        for (Student student: studentList) {
+
+            double total = student.getAssignmentOneMark() + student.getAssignmentTwoMark() + student.getAssignmentThreeMark();
+            student.setTotalMarks(total);
+
+            System.out.println("Student Name: " + student.getName());
+            System.out.println("Student Id: " + student.getId());
+            System.out.println("Assignment One Mark: " + student.getAssignmentOneMark());
+            System.out.println("Assignment Two Mark: " + student.getAssignmentTwoMark());
+            System.out.println("Assignment Three Mark: " + student.getAssignmentTwoMark());
+            System.out.println("Total Marks: " + student.getTotalMarks());
+            System.out.println("----------------------------");
         }
     }
 }
