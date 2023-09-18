@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=StudentMarksStatistics
+comment0.text=\n\ Reads\ students'\ marks\ from\ file,\ calculates\ total\ and\ prints\ highest\ and\ lowest\n\n\ @author\ (reema)\n\ @version\ (18/09/2023)\n
+comment1.params=
+comment1.target=java.lang.String\ getUnitName()
+comment2.params=name
+comment2.target=void\ setUnitName(java.lang.String)
+comment3.params=
+comment3.target=void\ calculateMarksStatistics()
+comment4.params=
+comment4.target=void\ readDataFromTextFile()
+comment4.text=\n\ F1\:\ Read\ unit\ name\ and\ students\ mark\ from\ text\ file\n
+numComments=5

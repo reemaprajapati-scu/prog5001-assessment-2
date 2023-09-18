@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Student
+comment0.text=\n\ Stores\ the\ student\ data.\n\n\ @author\ (reema)\n\ @version\ (18/09/2023)\n
+comment1.params=id\ name\ assignmentOneMark\ assignmentTwoMark\ assignmentThreeMark
+comment1.target=Student(java.lang.String,\ java.lang.String,\ double,\ double,\ double)
+comment2.params=
+comment2.target=java.lang.String\ getId()
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment4.params=
+comment4.target=double\ getAssignmentOneMark()
+comment5.params=
+comment5.target=double\ getAssignmentTwoMark()
+comment6.params=
+comment6.target=double\ getAssignmentThreeMark()
+numComments=7
