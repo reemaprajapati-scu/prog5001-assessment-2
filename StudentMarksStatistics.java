@@ -23,6 +23,7 @@ public class StudentMarksStatistics
      public void calculateMarksStatistics() {
         readDataFromTextFile();
         calculateAndPrintTotalMarks();
+        printStudentBelowThresholdMark();
     }
     
     /**
@@ -103,6 +104,37 @@ public class StudentMarksStatistics
             System.out.println("Assignment Three Mark: " + student.getAssignmentTwoMark());
             System.out.println("Total Marks: " + student.getTotalMarks());
             System.out.println("----------------------------");
+        }
+    }
+    
+     /**
+     * F3: print the list of students with total marks less than a certain threshold
+     */
+    public void printStudentBelowThresholdMark() {
+        System.out.print("Enter threshold mark: ");
+        Scanner scanner = new Scanner(System.in);
+
+        double threshold;
+        while (true) {
+            String input = scanner.nextLine();
+            try {
+                double mark = Double.parseDouble(input);
+
+                if (mark <= 0) {
+                    System.out.print("Please enter a valid threshold: ");
+                } else {
+                    threshold = mark;
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Please enter a valid threshold: ");
+            }
+        }
+
+        for (Student student: studentList) {
+            if (student.getTotalMarks() < threshold) {
+                System.out.println(student.getId() + "-" + student.getName() + ", " + "Total Marks: " + student.getTotalMarks());
+            }
         }
     }
 }
