@@ -24,6 +24,7 @@ public class StudentMarksStatistics
         readDataFromTextFile();
         calculateAndPrintTotalMarks();
         printStudentBelowThresholdMark();
+        calculateAndPrintTopFiveHighLowStudents();
     }
     
     /**
@@ -135,6 +136,60 @@ public class StudentMarksStatistics
             if (student.getTotalMarks() < threshold) {
                 System.out.println(student.getId() + "-" + student.getName() + ", " + "Total Marks: " + student.getTotalMarks());
             }
+        }
+    }
+    
+    /**
+     * F4: calculate and print top five highest and lowest students
+     */
+    public void calculateAndPrintTopFiveHighLowStudents() {
+        Student[] highestStudentList = new Student[5];
+        Student[] lowestStudentList = new Student[5];
+
+        double[] highestTotals = {0, 0, 0, 0, 0};
+        double[] lowestTotals = {90, 90, 90, 90, 90};
+
+        for (Student student : studentList) {
+
+            for (int i = 0; i < 5; i++) {
+                if (student.getTotalMarks() > highestTotals[i]) {
+                    // find and shift student with lower marks in the list
+                    for (int j = 4; j > i; j--) {
+                        highestStudentList[j] = highestStudentList[j - 1];
+                        highestTotals[j] = highestTotals[j - 1];
+                    }
+
+                    // add student into the highest list
+                    highestStudentList[i] = student;
+                    highestTotals[i] = student.getTotalMarks();
+                    break;
+                }
+            }
+
+            for (int i = 0; i < 5; i++) {
+                if (student.getTotalMarks() < lowestTotals[i]) {
+                    // find and shift student with higher marks in the list
+                    for (int j = 4; j > i; j--) {
+                        lowestStudentList[j] = lowestStudentList[j - 1];
+                        lowestTotals[j] = lowestTotals[j - 1];
+                    }
+
+                    // add student into the highest list
+                    lowestStudentList[i] = student;
+                    lowestTotals[i] = student.getTotalMarks();
+                    break;
+                }
+            }
+        }
+
+        System.out.println("Top 5 students with highest marks");
+        for (Student student: highestStudentList) {
+            System.out.println(student.getName() + ": " + student.getTotalMarks());
+        }
+
+        System.out.println("Top 5 students with lowest marks");
+        for (Student student: lowestStudentList) {
+            System.out.println(student.getName() + ": " + student.getTotalMarks());
         }
     }
 }
