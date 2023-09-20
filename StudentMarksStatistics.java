@@ -193,7 +193,7 @@ public class StudentMarksStatistics
     }
     
     /**
-     * Show Menu
+     * F5: Show Menu
      */
      private void showMenu() {
         System.out.println("Menu");
