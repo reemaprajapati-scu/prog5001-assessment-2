@@ -21,10 +21,7 @@ public class StudentMarksStatistics
     }
     
      public void calculateMarksStatistics() {
-        readDataFromTextFile();
-        calculateAndPrintTotalMarks();
-        printStudentBelowThresholdMark();
-        calculateAndPrintTopFiveHighLowStudents();
+        showMenu();
     }
     
     /**
@@ -187,9 +184,73 @@ public class StudentMarksStatistics
             System.out.println(student.getName() + ": " + student.getTotalMarks());
         }
 
+        System.out.println("");
+        
         System.out.println("Top 5 students with lowest marks");
         for (Student student: lowestStudentList) {
             System.out.println(student.getName() + ": " + student.getTotalMarks());
+        }
+    }
+    
+    /**
+     * Show Menu
+     */
+     private void showMenu() {
+        System.out.println("Menu");
+        System.out.println("1. Read Students' Marks From File");
+        System.out.println("2. Calculate And Print Total");
+        System.out.println("3. Print Students Lower Than Threshold");
+        System.out.println("4. Print Top 5 Highest and Top 5 Lowest");
+        System.out.println("5. Exit");
+
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Select Number From Menu: ");
+            String input = scanner.nextLine();
+
+            try {
+                int num = Integer.parseInt(input);
+
+                if (num == 1) {
+                    // if 1 is selected multiple times, students list will be duplicated
+                    if (!studentList.isEmpty()) {
+                        studentList.clear();
+                    }
+                    readDataFromTextFile();
+
+                } else if (num == 2) {
+
+                    if (studentList.isEmpty()) {
+                        System.out.println("Please read from file first - ");
+                    } else {
+                        calculateAndPrintTotalMarks();
+                    }
+
+                } else if (num == 3) {
+
+                    if (studentList.isEmpty()) {
+                        System.out.print("Please read from file first - ");
+                    } else {
+                        printStudentBelowThresholdMark();
+                    }
+
+                } else if (num == 4) {
+
+                    if (studentList.isEmpty()) {
+                        System.out.print("Please read from file first - ");
+                    } else {
+                        calculateAndPrintTopFiveHighLowStudents();
+                    }
+
+                } else if (num == 5) {
+                    break;
+                } else {
+                    System.out.print("Please enter a valid menu number - ");
+                }
+            } catch (NumberFormatException e) {
+                System.out.print("Please enter a valid menu number - ");
+            }
         }
     }
 }
